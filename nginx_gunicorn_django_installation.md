@@ -1,4 +1,4 @@
-Installation for nginx, gunicorn, and Django on a Beaglebone Black Debian System
+Django + Nginx + BBB Installation for a Debian Linux Distribution
 =========
 Installation guide that complments our Coding for Black tutorial series by Coding For Entrepreneurs. This guide assumes you have the Debian OS installed on a Beaglebone Black.
 
