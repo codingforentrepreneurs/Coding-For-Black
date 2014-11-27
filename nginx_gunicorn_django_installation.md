@@ -7,6 +7,10 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 - Beaglebone Black or a Microcontroller with the [latest Debian image](http://beagleboard.org/latest-images) already flashed
 - Ethernet Internet Connection
 - MicroSD Card as expanded, primary partion
+- MicroUSB cord connected from primary computer to Beaglebone Black.
+
+
+#### Installation
 
 1. Ensure Network/Internet is connected through Ethernet
 
