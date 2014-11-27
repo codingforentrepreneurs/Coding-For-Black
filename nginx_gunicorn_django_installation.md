@@ -1,10 +1,12 @@
-Django + Nginx + BBB
+Install Django + Nginx on the Beaglebone Black
 =========
-
-## Install Django + Nginx on the Beaglebone Black
 Installation guide that complments our Coding for Black tutorial series by Coding For Entrepreneurs. This guide assumes you have the Debian OS installed on a Beaglebone Black.
 
 
+#### Requirements
+- Beaglebone Black or a Microcontroller with the [latest Debian image](http://beagleboard.org/latest-images) already flashed
+- Ethernet Internet Connection
+- MicroSD Card as expanded, primary partion
 
 1. Ensure Network/Internet is connected through Ethernet
 
