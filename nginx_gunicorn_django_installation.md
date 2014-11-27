@@ -144,7 +144,7 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 		    listen 80;
 
 		    # for serving static files with django
-		    root /root/static/;
+		    root /var/www/;
 
 		    # keep logs in these files
 		    access_log /var/log/nginx/example_django_project_access.log;
@@ -202,7 +202,7 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 
 14. SSH into you BBB
 	```
-	ssh 192.168.7.2 -l root
+	$ ssh 192.168.7.2 -l root
 	```
 
 15. Read Status
