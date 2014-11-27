@@ -89,35 +89,35 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 
 9. Setup Gunicorn
     1. Take note of which gunicorn and python you're using.
-    ```
-    # which python
-    /usr/bin/python
+	    ```
+	    # which python
+	    /usr/bin/python
 
-    # which gunicorn
-    /usr/local/bin/gunicorn
-    ```
+	    # which gunicorn
+	    /usr/local/bin/gunicorn
+	    ```
 
 	2. Create new file at `etc/supervisor/conf.d/gunicorn.conf `
-	Using Nano:
-	```
-	nano /etc/supervisor/conf.d/gunicorn.conf 
+		Using Nano:
+		```
+		nano /etc/supervisor/conf.d/gunicorn.conf 
 
-	```
+		```
 	3. Add the following to the file
-	Please note the location of your python, guincorn, and django directory
-	```
-	[program:gunicorn] 
-	command = /usr/bin/python /usr/local/bin/gunicorn example_django_project.wsgi:application 
-	directory = /root/example_django_project/
-	user = root
-	 autostart = true 
-	autorestart = true 
-	stdout_logfile = /var/log/supervisor/gunicorn.log 
-	stderr_logfile = /var/log/supervisor/gunicorn_err.log 
+		Please note the location of your python, guincorn, and django directory
+		```
+		[program:gunicorn] 
+		command = /usr/bin/python /usr/local/bin/gunicorn example_django_project.wsgi:application 
+		directory = /root/example_django_project/
+		user = root
+		 autostart = true 
+		autorestart = true 
+		stdout_logfile = /var/log/supervisor/gunicorn.log 
+		stderr_logfile = /var/log/supervisor/gunicorn_err.log 
 
-	```
+		```
 	4. Save the File and Exit.
-	Using Nano, you do `Control + x` then `y` then `Return`
+		Using Nano, you do `Control + x` then `y` then `Return`
 
 10. Update Supervisor
 	Do this if you ever change your Guincorn settings in step #9
@@ -129,61 +129,61 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 
 11. Setup Nginx
 	1. Create Nginx settings file:
-	```
-	nano /etc/nginx/sites-available/example_django_project
-	```
+		```
+		nano /etc/nginx/sites-available/example_django_project
+		```
 	2. Paste the following in:
-	```
-	upstream gunicorn {
-	    server 127.0.0.1:8000;
-	}
+		```
+		upstream gunicorn {
+		    server 127.0.0.1:8000;
+		}
 
-	# define an nginx server at port 80
-	server {
-	    # listen on port 80
-	    listen 80;
+		# define an nginx server at port 80
+		server {
+		    # listen on port 80
+		    listen 80;
 
-	    # for serving static files with django
-	    root /root/static/;
+		    # for serving static files with django
+		    root /root/static/;
 
-	    # keep logs in these files
-	    access_log /var/log/nginx/example_django_project_access.log;
-	    error_log /var/log/nginx/example_django_project_error.log;
+		    # keep logs in these files
+		    access_log /var/log/nginx/example_django_project_access.log;
+		    error_log /var/log/nginx/example_django_project_error.log;
 
-	    client_max_body_size 0;
+		    client_max_body_size 0;
 
-	    # Attempt to serve files first, then pass the request up to Gunicorn
-	    try_files $uri @gunicorn;
+		    # Attempt to serve files first, then pass the request up to Gunicorn
+		    try_files $uri @gunicorn;
 
-	    # define rules for gunicorn
-	    location @gunicorn {
-	        client_max_body_size 0;
-	        proxy_pass http://gunicorn;
-	        proxy_redirect off;
-	        proxy_read_timeout 5m;
+		    # define rules for gunicorn
+		    location @gunicorn {
+		        client_max_body_size 0;
+		        proxy_pass http://gunicorn;
+		        proxy_redirect off;
+		        proxy_read_timeout 5m;
 
-	        # make sure these HTTP headers are set properly
-	        proxy_set_header Host            $host;
-	        proxy_set_header X-Real-IP       $remote_addr;
-	        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-	    }
-	}
-	```
+		        # make sure these HTTP headers are set properly
+		        proxy_set_header Host            $host;
+		        proxy_set_header X-Real-IP       $remote_addr;
+		        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		    }
+		}
+		```
 	3. Save and Close File.
-	Using Nano, you do `Control + x` then `y` then `Return`
+		Using Nano, you do `Control + x` then `y` then `Return`
 
 	4. Update Nginx Sites Enabled
-	```
-	# cd /etc/nginx/sites-enabled
-	# ls
-	default
-	# rm default
-	# sudo ln -s ../sites-available/example_django_project
-
+		```
+		# cd /etc/nginx/sites-enabled
+		# ls
+		default
+		# rm default
+		# sudo ln -s ../sites-available/example_django_project
+		```
 	5. Restart Nginx
-	```
-	# sudo service nginx restart
-	```
+		```
+		# sudo service nginx restart
+		```
 
 12. Deactivate Default Beaglebone Black Services:
 	It's okay if some fail.
@@ -202,7 +202,7 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 
 14. SSH into you BBB
 	```
-
+	ssh 192.168.7.2 -l root
 	```
 
 15. Read Status
