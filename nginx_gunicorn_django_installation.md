@@ -63,29 +63,27 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 8. Confirm Django is working with Lynx
 	1. Open New Terminal (Mac/Linux) or puTTY (Windows) Window
 	2. SSH Again (keep both sessions active):
-	```
-	$ ssh 192.168.7.2 -l root
-	```
+		```
+		$ ssh 192.168.7.2 -l root
+		```
 	3. Use Lynx to test Django is running:
-	```
-	# lynx http://127.0.0.1:8000/ 
-	```
-	http://127.0.0.1:8000/ comes from the `Django` runserver result
+		```
+		# lynx http://127.0.0.1:8000/ 
+		```
+		http://127.0.0.1:8000/ comes from the `Django` runserver result
 
 	3. Confirm you see the initial django welcome screen in text-only. Something like:
+		```
+		It worked!
 
-	```
-	It worked!
+		Congratulations on your first Django-powered page.
 
-	Congratulations on your first Django-powered page.
+		Of course, you haven't actually done any work yet. Next, start your
+		first app by running python manage.py startapp [app_label].
 
-	Of course, you haven't actually done any work yet. Next, start your
-	first app by running python manage.py startapp [app_label].
-
-	You're seeing this message because you have DEBUG = True in your Django
-	settings file and you haven't configured any URLs. Get to work!
-	```
-	
+		You're seeing this message because you have DEBUG = True in your Django
+		settings file and you haven't configured any URLs. Get to work!
+		```	
 	4. Close this Window and go back to main SSH session
 
 
