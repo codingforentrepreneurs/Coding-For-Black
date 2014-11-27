@@ -106,14 +106,14 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 	3. Add the following to the file
 		Please note the location of your python, guincorn, and django directory
 		```
-		[program:gunicorn] 
-		command = /usr/bin/python /usr/local/bin/gunicorn example_django_project.wsgi:application 
-		directory = /root/example_django_project/
+		[program:gunicorn]
+		command = /usr/bin/python /usr/bin/gunicorn cfb.wsgi:application
+		directory = /root/cfb/
 		user = root
-		 autostart = true 
-		autorestart = true 
-		stdout_logfile = /var/log/supervisor/gunicorn.log 
-		stderr_logfile = /var/log/supervisor/gunicorn_err.log 
+		autostart = true
+		autorestart = true
+		stdout_logfile = /var/log/supervisor/gunicorn.log
+		stderr_logfile = /var/log/supervisor/gunicorn_err.log
 
 		```
 	4. Save the File and Exit.
@@ -143,12 +143,12 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 		    # listen on port 80
 		    listen 80;
 
-		    # for serving static files with django
+		    # look in this directory for files to serve
 		    root /var/www/;
 
 		    # keep logs in these files
-		    access_log /var/log/nginx/example_django_project_access.log;
-		    error_log /var/log/nginx/example_django_project_error.log;
+		    access_log /var/log/nginx/django_project_name_access.log;
+		    error_log /var/log/nginx/django_project_name_error.log;
 
 		    client_max_body_size 0;
 
@@ -165,9 +165,10 @@ Installation guide that complments our Coding for Black tutorial series by Codin
 		        # make sure these HTTP headers are set properly
 		        proxy_set_header Host            $host;
 		        proxy_set_header X-Real-IP       $remote_addr;
-		        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-		    }
+				proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+			}
 		}
+
 		```
 	3. Save and Close File.
 		Using Nano, you do `Control + x` then `y` then `Return`
