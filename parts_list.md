@@ -1,6 +1,6 @@
 Parts List
 =========
-A parts list for the Coding for Black tutorial series.
+A parts list for the Coding for Black tutorial series using a BeagleBone Black micro controller.
 
 
 #### The List
